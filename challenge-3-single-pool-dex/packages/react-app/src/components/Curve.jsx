@@ -26,6 +26,15 @@ export default function Curve(props) {
 
     const width = canvas.width;
     const height = canvas.height;
+    const myStyle={
+      backgroundImage: 
+      "url('https://media.geeksforgeeks.org/wp-content/uploads/rk.png')",
+      height:'100vh',
+      marginTop:'-70px',
+      fontSize:'50px',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+  };
 
     if (canvas.getContext && props.ethReserve && props.tokenReserve) {
       const k = props.ethReserve * props.tokenReserve;
@@ -170,8 +179,14 @@ export default function Curve(props) {
   }, [props]);
 
   return (
-    <div style={{ position: "relative", width: props.width, height: props.height }}>
-      <canvas style={{ position: "absolute", left: 0, top: 0 }} ref={ref} width={props.width} height={props.height} />
+    <div style={{position: "relative", width: props.width, height: props.height}}>
+      <canvas style={{backgroundImage: 
+      "url('https://images.ctfassets.net/v44fuld738we/5rQDCKHJMvVmKHNBFzW6L3/81acd9945fd4c925a41399946b7f6dea/Laser-Eyes_1900x1900_Magazine_Square_Small.png')", 
+      backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }} ref={ref} width={props.width} height={props.height} />
+
       <div style={{ position: "absolute", left: "20%", bottom: -20 }}>-- ETH Reserve --></div>
       <div
         style={{ position: "absolute", left: -20, bottom: "20%", transform: "rotate(-90deg)", transformOrigin: "0 0" }}
