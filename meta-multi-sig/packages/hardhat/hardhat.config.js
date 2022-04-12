@@ -112,10 +112,20 @@ module.exports = {
             enabled: true,
             runs: 200
           }
+          
         }
       },
+      // {
+      //   version:  "0.6.7",
+      //   settings: {
+      //     optimizer: {
+      //       enabled: true,
+      //       runs: 200
+      //     }
+          
+      //   }
+      // }
     ],
-
   },
   etherscan: {
     // Your API key for Etherscan

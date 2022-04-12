@@ -38,7 +38,7 @@ import { CreateTransaction, Transactions, Owners, FrontPage } from "./views"
 
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS['localhost']; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = 'localhost'; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // const poolServerUrl = "https://backend.multisig.holdings:49832/"
 const poolServerUrl = "http://localhost:49832/"
