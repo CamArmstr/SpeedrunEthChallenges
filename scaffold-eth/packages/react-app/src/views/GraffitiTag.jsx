@@ -10,7 +10,7 @@ import { Address, Balance, Events } from "../components";
  * @param {*} readContracts contracts from current chain already pre-loaded using ethers contract module. More here https://docs.ethers.io/v5/api/contract/contract/
  * @returns react component
  **/
-function Home({ yourLocalBalance, readContracts, localProvider, mainnetProvider }) {
+function GraffitiTag({ yourLocalBalance, readContracts, localProvider, mainnetProvider }) {
   // you can also use hooks locally in your component of choice
   // in this case, let's keep track of 'purpose' variable from our contract
   const purpose = useContractReader(readContracts, "YourContract", "purpose");
@@ -54,4 +54,4 @@ function Home({ yourLocalBalance, readContracts, localProvider, mainnetProvider 
   );
 }
 
-export default Home;
+export default GraffitiTag;

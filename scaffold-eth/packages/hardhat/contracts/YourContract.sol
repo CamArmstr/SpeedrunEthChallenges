@@ -7,7 +7,7 @@ import "hardhat/console.sol";
 
 contract YourContract {
 
-  event SetPurpose(address sender, string purpose);
+  event GraffitiPublish(string graffitiTag, address tagger, address signers);
 
   string public purpose = "Building Unstoppable Apps!!!";
 
@@ -15,11 +15,14 @@ contract YourContract {
     // what should we do on deploy?
   }
 
-  function setPurpose(string memory newPurpose) public {
-      purpose = newPurpose;
-      console.log(msg.sender,"set purpose to",purpose);
-      emit SetPurpose(msg.sender, purpose);
+  //Tag the wall with the signed message and emit the array of signers
+  //as part of the event.
+  //Todo: Pass in an Array of signers to display on the wall??? 
+  function tagWall(string memory newTag) public {
+      console.log(msg.sender,"tagged the wall with ",newTag);
+      emit GraffitiPublish(newTag, msg.sender, msg.sender);
   }
+
 
   // to support receiving ETH by default
   receive() external payable {}

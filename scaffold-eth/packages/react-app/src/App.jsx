@@ -15,6 +15,7 @@ import "./App.css";
 import {
   Account,
   Contract,
+  Event,
   Faucet,
   GasGauge,
   Header,
@@ -29,7 +30,7 @@ import externalContracts from "./contracts/external_contracts";
 // contracts
 import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor, Web3ModalSetup } from "./helpers";
-import { Home, ExampleUI, Hints, Subgraph } from "./views";
+import { Home, ExampleUI, GraffitiTag, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
 
 const { ethers } = require("ethers");
@@ -258,7 +259,10 @@ function App(props) {
       />
       <Menu style={{ textAlign: "center", marginTop: 40 }} selectedKeys={[location.pathname]} mode="horizontal">
         <Menu.Item key="/">
-          <Link to="/">App Home</Link>
+          <Link to="/">Graffiti Wall</Link>
+        </Menu.Item>
+        <Menu.Item key="/tag">
+          <Link to="/">Start Tagging</Link>
         </Menu.Item>
         <Menu.Item key="/debug">
           <Link to="/debug">Debug Contracts</Link>
@@ -280,7 +284,20 @@ function App(props) {
       <Switch>
         <Route exact path="/">
           {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
-          <Home yourLocalBalance={yourLocalBalance} readContracts={readContracts} />
+          <Home 
+          yourLocalBalance={yourLocalBalance} 
+          readContracts={readContracts}
+          mainnetProvider={mainnetProvider}
+          localProvider={localProvider}
+           />
+        </Route>
+        <Route path="/tag">
+          <GraffitiTag
+          yourLocalBalance={yourLocalBalance} 
+          readContracts={readContracts}
+          mainnetProvider={mainnetProvider}
+          localProvider={localProvider}
+          />
         </Route>
         <Route exact path="/debug">
           {/*
