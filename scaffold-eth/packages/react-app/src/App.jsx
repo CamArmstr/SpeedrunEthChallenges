@@ -262,7 +262,7 @@ function App(props) {
           <Link to="/">Graffiti Wall</Link>
         </Menu.Item>
         <Menu.Item key="/tag">
-          <Link to="/">Start Tagging</Link>
+          <Link to="/tag">Start Tagging!</Link>
         </Menu.Item>
         <Menu.Item key="/debug">
           <Link to="/debug">Debug Contracts</Link>
@@ -291,12 +291,19 @@ function App(props) {
           localProvider={localProvider}
            />
         </Route>
-        <Route path="/tag">
+        <Route exact path="/tag">
           <GraffitiTag
           yourLocalBalance={yourLocalBalance} 
-          readContracts={readContracts}
+
           mainnetProvider={mainnetProvider}
           localProvider={localProvider}
+          address={address}
+          userSigner={userSigner}
+          price={price}
+          tx={tx}
+          writeContracts={writeContracts}
+          readContracts={readContracts}
+          purpose={purpose}
           />
         </Route>
         <Route exact path="/debug">
