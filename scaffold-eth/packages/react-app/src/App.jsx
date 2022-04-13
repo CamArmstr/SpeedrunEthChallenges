@@ -30,7 +30,7 @@ import externalContracts from "./contracts/external_contracts";
 // contracts
 import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor, Web3ModalSetup } from "./helpers";
-import { Home, ExampleUI, GraffitiTag, Hints, Subgraph } from "./views";
+import { Home, ExampleUI, GraffitiTag, GraffitiApprovals, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
 
 const { ethers } = require("ethers");
@@ -264,6 +264,9 @@ function App(props) {
         <Menu.Item key="/tag">
           <Link to="/tag">Start Tagging!</Link>
         </Menu.Item>
+        <Menu.Item key="/approvals">
+          <Link to="/approvals">Approve Some Graffiti</Link>
+        </Menu.Item>
         <Menu.Item key="/debug">
           <Link to="/debug">Debug Contracts</Link>
         </Menu.Item>
@@ -305,6 +308,15 @@ function App(props) {
           readContracts={readContracts}
           purpose={purpose}
           />
+        </Route>
+        <Route exact path="/approvals">
+          {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
+          <GraffitiApprovals 
+          yourLocalBalance={yourLocalBalance} 
+          readContracts={readContracts}
+          mainnetProvider={mainnetProvider}
+          localProvider={localProvider}
+           />
         </Route>
         <Route exact path="/debug">
           {/*

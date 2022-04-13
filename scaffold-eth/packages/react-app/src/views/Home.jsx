@@ -2,7 +2,7 @@ import { useContractReader } from "eth-hooks";
 import { ethers } from "ethers";
 import React from "react";
 import { Link } from "react-router-dom";
-import { Address, Balance, Events } from "../components";
+import { Address, Balance, Events, EventsAdmin } from "../components";
 
 /**
  * web3 props can be passed from '../App.jsx' into your local view component for use
@@ -37,10 +37,10 @@ function Home({ yourLocalBalance, readContracts, localProvider, mainnetProvider 
         <span style={{ marginRight: 8 }}>✏️</span>
         This is Event Listener 2 Test {" "}
         <div>
-        <Events
+        <EventsAdmin
           contracts={readContracts}
           contractName="YourContract"
-          eventName="SetPurpose2"
+          eventName="GraffitiPublish"
           localProvider={localProvider}
           mainnetProvider={mainnetProvider}
           startBlock={1}
