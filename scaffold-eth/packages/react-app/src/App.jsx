@@ -30,7 +30,7 @@ import externalContracts from "./contracts/external_contracts";
 // contracts
 import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor, Web3ModalSetup } from "./helpers";
-import { Home, ExampleUI, GraffitiTag, GraffitiApprovals, Hints, Subgraph } from "./views";
+import { Home, ExampleUI, GraffitiTag, GraffitiApprovals, GraffitiAdmin, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
 
 const { ethers } = require("ethers");
@@ -267,22 +267,13 @@ function App(props) {
         <Menu.Item key="/approvals">
           <Link to="/approvals">Approve Some Graffiti</Link>
         </Menu.Item>
+        <Menu.Item key="/admin">
+          <Link to="/admin">Add and Remove Signers</Link>
+        </Menu.Item>
         <Menu.Item key="/debug">
           <Link to="/debug">Debug Contracts</Link>
         </Menu.Item>
-        <Menu.Item key="/hints">
-          <Link to="/hints">Hints</Link>
-        </Menu.Item>
-        <Menu.Item key="/exampleui">
-          <Link to="/exampleui">ExampleUI</Link>
-        </Menu.Item>
-        <Menu.Item key="/mainnetdai">
-          <Link to="/mainnetdai">Mainnet DAI</Link>
-        </Menu.Item>
-        <Menu.Item key="/subgraph">
-          <Link to="/subgraph">Subgraph</Link>
-        </Menu.Item>
-      </Menu>
+        </Menu>
 
       <Switch>
         <Route exact path="/">
@@ -316,6 +307,30 @@ function App(props) {
           readContracts={readContracts}
           mainnetProvider={mainnetProvider}
           localProvider={localProvider}
+          address={address}
+          userSigner={userSigner}
+          price={price}
+          tx={tx}
+          writeContracts={writeContracts}
+          purpose={purpose}
+           />
+        </Route>
+        <Route exact path="/admin">
+          {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
+          <GraffitiApprovals 
+          yourLocalBalance={yourLocalBalance} 
+          readContracts={readContracts}
+          mainnetProvider={mainnetProvider}
+          localProvider={localProvider}
+          address={address}
+          userSigner={userSigner}
+          price={price}
+          tx={tx}
+          writeContracts={writeContracts}
+          purpose={purpose}
+          signaturesRequired={1}
+          blockExplorer={blockExplorer}
+
            />
         </Route>
         <Route exact path="/debug">
