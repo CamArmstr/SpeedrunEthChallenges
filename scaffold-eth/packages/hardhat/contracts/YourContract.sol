@@ -61,7 +61,7 @@ contract YourContract {
     emit RemoveSigner(removedSigner);
   }
 
-  
+
 
   // to support receiving ETH by default
   receive() external payable onlyOwners {}
