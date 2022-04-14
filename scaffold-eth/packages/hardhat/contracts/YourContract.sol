@@ -11,6 +11,7 @@ contract YourContract {
   address[5] public dummy;
 
   mapping(address => bool) public isOwner;
+  mapping(address => uint) public index;
 
   event Dummy(address[5] dummy);
   event GraffitiPublish(string graffitiTag, address tagger, address signers);
@@ -23,13 +24,10 @@ contract YourContract {
     uint totalBalance = msg.value;
     isOwner[address(0x637038769A98CD9C0E896a86bD395c864DEF00E9)] = true;
     owners.push(msg.sender);
-    emit CurrentOwners(owners, block.timestamp);
-    
-    dummy[0] = address(0x637038769A98CD9C0E896a86bD395c864DEF00E9);
-    // dummy.push(1);
-    // dummy[1] = 1337;
-    // dummy.push("grits dummy");
+    index[msg.sender] = 0;
 
+    emit CurrentOwners(owners, block.timestamp);
+    dummy[0] = address(0x637038769A98CD9C0E896a86bD395c864DEF00E9);
     emit Dummy(dummy);
   }
 
@@ -47,8 +45,25 @@ contract YourContract {
       emit GraffitiPublish(newTag, msg.sender, msg.sender);
   }
 
+  function addSigner(address newSigner) onlyOwners public {
+      require(isOwner[newSigner] != true, "already an owner, ya dingus");
+      isOwner[newSigner] = true;
+
+      owners.push(newSigner);
+      emit AddSigner(newSigner);
+      emit CurrentOwners(owners, block.timestamp);
+  }
+
+  function removeSigner(address removedSigner) onlyOwners public {
+    require(msg.sender!=removedSigner, "that's yourself. Can't do that");
+    require(isOwner[removedSigner]==true, "they're not a signer!");
+    isOwner[removedSigner]=false;
+    emit RemoveSigner(removedSigner);
+  }
+
+  
 
   // to support receiving ETH by default
-  receive() external payable {}
+  receive() external payable onlyOwners {}
   fallback() external payable {}
 }
