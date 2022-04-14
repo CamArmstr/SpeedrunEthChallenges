@@ -63,6 +63,15 @@ contract YourContract {
 
 
 
+  function getMessageHash(
+    address _to
+    uint _amount
+    string memory _message
+    uint _nonce
+  ) public pure returns (bytes32) {
+    return keccak256(abi.encodePacked(_to, _amount, _messsage, _nonce));
+  }
+
   // to support receiving ETH by default
   receive() external payable onlyOwners {}
   fallback() external payable {}
