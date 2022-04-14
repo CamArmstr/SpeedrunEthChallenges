@@ -1,9 +1,9 @@
-import { Alert, Button, Card, Col, DatePicker, Divider, Input, notification, Progress, Slider, Spin, Switch } from "antd";
+import { Alert, Button, Card, DatePicker, Divider, Input, notification, Progress, Slider, Spin, Switch } from "antd";
 import { useContractReader } from "eth-hooks";
 import { ethers } from "ethers";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Address, Balance, Events, EventsAdmin, Owners } from "../components";
+import { Address, Balance, Events, EventsAdmin } from "../components";
 
 /**
  * web3 props can be passed from '../App.jsx' into your local view component for use
@@ -13,13 +13,10 @@ import { Address, Balance, Events, EventsAdmin, Owners } from "../components";
  **/
 function GraffitiApprovals({ 
   yourLocalBalance, 
-  readContracts,
-  blockExplorer, 
+  readContracts, 
   localProvider, 
   mainnetProvider,
   tx,
-  ownerEvents,
-  signaturesRequired,
   writeContracts }) {
   // you can also use hooks locally in your component of choice
   // in this case, let's keep track of 'purpose' variable from our contract
@@ -39,11 +36,6 @@ function GraffitiApprovals({
 
   return (
     <div>
-      <Col>
-          {/* <Owners ownerEvents={ownerEvents} signaturesRequired={signaturesRequired} mainnetProvider={mainnetProvider} blockExplorer={blockExplorer} /> */}
-          <Owners ownerEvents={ownerEvents} signaturesRequired={signaturesRequired} mainnetProvider={mainnetProvider} blockExplorer={blockExplorer} />
-              
-      </Col>
       <div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>✏️</span>
         This is Event Listener 2 Test {" "}

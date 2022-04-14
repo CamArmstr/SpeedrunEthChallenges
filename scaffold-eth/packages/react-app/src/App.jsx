@@ -317,7 +317,7 @@ function App(props) {
         </Route>
         <Route exact path="/admin">
           {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
-          <GraffitiApprovals 
+          <GraffitiAdmin 
           yourLocalBalance={yourLocalBalance} 
           readContracts={readContracts}
           mainnetProvider={mainnetProvider}
