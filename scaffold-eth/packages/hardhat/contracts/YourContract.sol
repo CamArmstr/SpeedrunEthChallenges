@@ -64,12 +64,12 @@ contract YourContract {
 
 
   function getMessageHash(
-    address _to
-    uint _amount
-    string memory _message
+    address _to,
+    uint _amount,
+    string memory _message,
     uint _nonce
   ) public pure returns (bytes32) {
-    return keccak256(abi.encodePacked(_to, _amount, _messsage, _nonce));
+    return keccak256(abi.encodePacked(_to, _amount, _message, _nonce));
   }
 
   // to support receiving ETH by default
